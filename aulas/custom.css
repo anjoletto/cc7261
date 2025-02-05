@@ -1,0 +1,56 @@
+/*
+@theme custom
+*/
+
+@import 'default';
+
+section {
+    font-family: "intel one mono";
+    font-size: 30px;
+}
+
+h1 {
+  font-size: 70px;
+  text-align: center;
+  color: black;
+}
+
+h2 {
+  font-size: 50px;
+  text-align: center;
+  color: black;
+}
+
+h3 {
+  font-size: 40px;
+  text-align: center;
+  color: black;
+}
+
+code {
+    font-family: "intel one mono";
+    color: black;
+}
+
+section.centered {
+    margin: auto;
+}
+
+.columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.columns3{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    font-size: 25px
+}
+
+.columns4{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+}
