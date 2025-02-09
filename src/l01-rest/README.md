@@ -2,6 +2,7 @@
 
 ## Instalação
 
+### *NIX (Linux, macOS, BSD,...)
 ```sh
 python -m venv .venv
 ```
@@ -19,6 +20,12 @@ ou
 pip install -r requirements.txt
 ```
 
+### Windows dos laboratórios
+
+```sh
+pip install --user fastapi uvicorn
+```
+
 ## Para testar
 
 No arquivo `main.py` adicione:
@@ -32,10 +39,16 @@ async def root():
     return {"message": "hello world"}
 ```
 
-No terminal:
+No terminal, se for *NIX:
 ```sh
 fastapi dev main.py
 ```
+
+Se for laboratório usando Windows:
+```sh
+python -m uvicorn main:app --reload
+```
+
 
 No browser abra as páginas:
 - http://localhost:8000/
