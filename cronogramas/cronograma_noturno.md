@@ -38,15 +38,15 @@
 | 12         | 23/04    | quarta            | 060       | K202     | Teoria   | Projeto                                |
 | 12         | 24/04    | quinta            | 660       | K210     | Lab      | Projeto                                |
 | 12         | 25/04    | sexta             | 760       | K201     | Lab      | Projeto                                |
-| 13         | 30/04    | quarta            | 060       | K202     | Teoria   | Projeto                                |
+| 13         | 30/04    | quarta            | 060       | K202     | Teoria   | Transações                             |
 | 13         | 01/05    | quinta            | 660       | K210     | Lab      | **Recesso**                            |
 | 13         | 02/05    | sexta             | 760       | K201     | Lab      | **Recesso**                            |
-| 14         | 07/05    | quarta            | 060       | K202     | Teoria   | Transações                             |
+| 14         | 07/05    | quarta            | 060       | K202     | Teoria   | Exclusão mútua e algoritmos de eleição |
 | 14         | 08/05    | quinta            | 660       | K210     | Lab      | Projeto                                |
 | 14         | 09/05    | sexta             | 760       | K201     | Lab      | Projeto                                |
-| 15         | 14/05    | quarta            | 060       | K202     | Teoria   | Exclusão mútua e algoritmos de eleição |
+| 15         | 14/05    | quarta            | 060       | K202     | Teoria   | Métricas                               |
 | 15         | 15/05    | quinta            | 660       | K210     | Lab      | Projeto                                |
 | 15         | 16/05    | sexta             | 760       | K201     | Lab      | Projeto                                |
-| 16         | 21/05    | quarta            | 060       | K202     | Teoria   | Métricas                               |
+| 16         | 21/05    | quarta            | 060       | K202     | Teoria   | INOVA                                  |
 | 16         | 22/05    | quinta            | 660       | K210     | Lab      | Projeto                                |
 | 16         | 23/05    | sexta             | 760       | K201     | Lab      | Projeto                                |
