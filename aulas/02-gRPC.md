@@ -96,6 +96,11 @@ Com cliente e servidor:
 ## No terminal do Codespace
 
 ```sh
+pip install grpcio grpcio-tools
+```
+
+Se quiser instalar o compilador do protobuf
+```sh
 sudo apt update
 ```
 
@@ -103,9 +108,6 @@ sudo apt update
 sudo apt install -y protobuf-compiler
 ```
 
-```sh
-pip install grpcio grpcio-tools
-```
 
 
 ## Hello World - Protobuf
