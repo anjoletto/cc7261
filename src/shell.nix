@@ -4,5 +4,7 @@
   pkgs.mkShell {
       nativeBuildInputs = with pkgs.buildPackages; [
         python312
+        python312Packages.pip
+        protobuf_27
     ];
   }
