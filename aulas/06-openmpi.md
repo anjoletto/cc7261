@@ -22,6 +22,12 @@ _paginate: skip
 - Tutorial usado como base: https://mpitutorial.com/
 - Exemplo de códigos dos tutoriais: https://github.com/mpitutorial/mpitutorial/tree/gh-pages/tutorials
 
+- Instalação no github codespace:
+```
+sudo apt update
+sudo apt install openmpi-bin openmpi-doc libopenmpi-dev
+```
+
 ## OpenMPI
 
 - implementação de código aberto
@@ -57,6 +63,7 @@ int main() {
 - Para executar o programa: `mpirun hello_world`
 - Para executar o programa com apenas 2 workers: `mpirun -n 2 hello_world`
 - Tente executar o programa com mais workers do que processadores do seu computador
+- se necessário, use a opção `mpirun --use-hwthread-cpus`
 
 ## Hello World (resultado)
 
