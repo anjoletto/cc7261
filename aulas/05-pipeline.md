@@ -1,5 +1,5 @@
 ---
-title: Pipeline e Par Exclusivo
+title: Pipeline
 author: Leonardo Anjoletto Ferreira
 theme: custom
 paginate: true
@@ -13,12 +13,11 @@ _footer: Leonardo Anjoletto Ferreira
 _paginate: skip
 -->
 
-# Padrões Pipeline e Par Exclusivo
+# Padrão Pipeline
+
 
 https://zguide.zeromq.org/
 
-
-# Parallel Pipeline
 
 ## Parallel Pipeline
 
