@@ -5,6 +5,10 @@
       nativeBuildInputs = with pkgs.buildPackages; [
         python312
         python312Packages.pip
-        protobuf_27
+        python312Packages.pyzmq
+        python312Packages.msgpack
+        zeromq
+        czmq
+        mpi
     ];
   }
