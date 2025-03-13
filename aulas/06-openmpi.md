@@ -217,7 +217,7 @@ int main(){
   // se for o processo com o menor rank, envia a mensagem inicial
   if (rank == 0){
     MPI_Recv(&msg, 1, MPI_INT, size - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    printf("msg: %d (%d -> %d)\n", msg, rank, size -1);
+    printf("msg: %d (%d -> %d)\n", msg, size - 1, rank);
   }
 
   MPI_Finalize();
