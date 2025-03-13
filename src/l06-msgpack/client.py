@@ -2,7 +2,6 @@ import zmq
 import msgpack
 
 ctx = zmq.Context()
-
 client = ctx.socket(zmq.REQ)
 client.connect("tcp://localhost:5555")
 count = 0
@@ -16,3 +15,6 @@ while True:
     reply_p = client.recv()
     reply = msgpack.unpackb(reply_p)
     print(f"Received reply: {reply}")
+
+client.close()
+ctx.close()
