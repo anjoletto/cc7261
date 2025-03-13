@@ -3,19 +3,16 @@ import msgpack
 
 ctx = zmq.Context()
 
-server = ctx.socket(zmq.REP)
-server.bind("tcp://*:5555")
+client = ctx.socket(zmq.REQ)
+client.connect("tcp://localhost:5555")
 count = 0
 
 while True:
-    msg_p = server.recv()
-    msg = msgpack.unpackb(msg_p)
     count += 1
-    print(f"Mensagem {count} : {msg}")
+    msg = {"request": "Hello", "count": count}
+    msg_p = msgpack.packb(msg)
+    client.send(msg_p)
 
-    ans = {"status": "ok", "reply": "World"}
-    ans_p = msgpack.packb(ans)
-    server.send(ans_p)
-
-server.close()
-ctx.close()
+    reply_p = client.recv()
+    reply = msgpack.unpackb(reply_p)
+    print(f"Received reply: {reply}")
