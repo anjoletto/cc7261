@@ -45,12 +45,10 @@ As imagens usadas nos slides foram tiradas do livro base, que estão disponívei
 <div>
 
 ![h:250px](./figs/05-05.png)
-$\delta T_{req} = T_2 - T_1 \approx T_4 - T_3 = \delta T_{res}$
-
+$$\delta T_{req} = T_2 - T_1 \approx T_4 - T_3 = \delta T_{res}$$
 $$ \Theta = T_3 + ((T_2 - T_1) + (T_4 - T_3))/2 - T_4 $$
-
-$\Theta = ((T_2 - T_1) + (T_3 - T_4))/2$
-$\delta = ((T_4 - T_1) - (T_3 - T_2))/2$
+$$\Theta = ((T_2 - T_1) + (T_3 - T_4))/2$$
+$$\delta = ((T_4 - T_1) - (T_3 - T_2))/2$$
 
 </div>
 </div>
