@@ -20,6 +20,40 @@ _paginate: skip
 As imagens usadas nos slides foram tiradas do livro base, que estão disponíveis no site https://www.distributed-systems.net/index.php/books/ds4/, junto com a versão grátis do livro
 
 ## Relógios
+- Saber a hora correta e medir a passagem do tempo são problemas difíceis
+- Atualmente: média de 50 relógios atômicos (oscilação de energia em átomos de césio-133)
+- Preciso o suficiente para precisarmos acertar o relógio em 1 segundo de tempos em tempos (segundos de salto - leap second)
+* Mas ainda falta passar a hora certa para todo mundo
+
+## Tempo Universal Coordenado (UTC)
+
+- Universal Time (UT) + Coordenação (C) = UTC
+- Não é definido pela passagem de dias, mas pelo Tempo Atômico Internacional (TAI)
+- UTC é enviado por broadcast por satélites e rádios de ondas curtas
+
+## Atualização de horas
+
+<div class="columns">
+<div>
+
+- Um servidor $S$ possui a hora aceita como correta
+- Um cliente $C$ deseja saber a hora correta
+- Para a atualização do relógio também é considerando o tempo de envio e recebimento da mensagem
+- A sincronização escolhe $\Theta$ para que $\delta$ seja mínimo
+
+</div>
+<div>
+
+![h:250px](./figs/05-05.png)
+$\delta T_{req} = T_2 - T_1 \approx T_4 - T_3 = \delta T_{res}$
+
+$$ \Theta = T_3 + ((T_2 - T_1) + (T_4 - T_3))/2 - T_4 $$
+
+$\Theta = ((T_2 - T_1) + (T_3 - T_4))/2$
+$\delta = ((T_4 - T_1) - (T_3 - T_2))/2$
+
+</div>
+</div>
 
 ## Clock em eletrônica e drift
 Considerando uma CPU com clock de 3GHz:
