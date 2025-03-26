@@ -16,7 +16,7 @@ O sistema implementado:
 - Todos os processos (usuário ou servidor) deve gerar um arquivo log com todas as interações que ocorrerem (postagens, mensagens, sincronização de relógio, etc.)
 
 ## Desenvolvimento do projeto:
-- O projeto deve ser desenvolvido usando qualquer biblioteca de comunicação (e.g., ZeroMQ) e com pelo menos 3 linguagens diferentes (e.g., Python, Java, C, C++, JavaScript ou TypeScript, Go, Rust, Zig,...);
+- O projeto deve ser desenvolvido usando qualquer biblioteca de comunicação (e.g., ZeroMQ, gRPC, OpenMPI) e com pelo menos 3 linguagens diferentes (e.g., Python, Java, C, C++, JavaScript ou TypeScript, Go, Rust, Zig, Elixir, Gleam, Erlang...);
 - Os processos que postam e/ou enviam mensagens podem ser controlados pelos usuários ou fazer postagens/troca de mensagens de forma automática;
 - O projeto deve executar pelo menos 3 servidores e 5 usuários para testar;
 - Para garantir que a sincronização dos relógios está funcionando, os relógios de todos os processos podem sofrer alterações na atualização deles de forma aleatória podendo ser adiantados ou atrasados em até 1 segundo;
