@@ -20,5 +20,9 @@ O sistema implementado:
 - Os processos que postam e/ou enviam mensagens podem ser controlados pelos usuários ou fazer postagens/troca de mensagens de forma automática;
 - O projeto deve executar pelo menos 3 servidores e 5 usuários para testar;
 - Para garantir que a sincronização dos relógios está funcionando, os relógios de todos os processos podem sofrer alterações na atualização deles de forma aleatória podendo ser adiantados ou atrasados em até 1 segundo;
+- A documentação do projeto deve conter:
+    - Descrição do padrão de mensagem utilizado em todas as partes do projeto
+    - Descrição dos dados enviados nas mensagens
+    - Diagrama mostrando a relação entre os serviços implementados
 
 
