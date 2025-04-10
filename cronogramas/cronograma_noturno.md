@@ -20,19 +20,19 @@
 | 6          | 12/03    | quarta            | 060       | K202     | Teoria   | Comunicação clássica e mensagens       |
 | 6          | 13/03    | quinta            | 660       | K210     | Lab      | Comunicação clássica e mensagens       |
 | 6          | 14/03    | sexta             | 760       | K201     | Lab      | Comunicação clássica e mensagens       |
-| 7          | 19/03    | quarta            | 060       | ????     | Teoria   | Concorrência e sincronização           |
+| 7          | 19/03    | quarta            | 060       | K015     | Teoria   | Concorrência e sincronização           |
 | 7          | 20/03    | quinta            | 660       | K210     | Lab      | Concorrência e sincronização           |
 | 7          | 21/03    | sexta             | 760       | K201     | Lab      | Concorrência e sincronização           |
-| 8          | 26/03    | quarta            | 060       | ????     | Teoria   | Consistência e replicação              |
-| 8          | 27/03    | quinta            | 660       | K210     | Lab      | Consistência e replicação              |
-| 8          | 28/03    | sexta             | 760       | K201     | Lab      | Consistência e replicação              |
-| 9          | 02/04    | quarta            | 060       | K202     | Teoria   | Nomeação                               |
+| 8          | 26/03    | quarta            | 060       | K015     | Teoria   | Apresentação do projeto                |
+| 8          | 27/03    | quinta            | 660       | K210     | Lab      | Projeto                                |
+| 8          | 28/03    | sexta             | 760       | K201     | Lab      | Projeto                                |
+| 9          | 02/04    | quarta            | 060       | K202     | Teoria   | Consistência e replicação              |
 | 9          | 03/04    | quinta            | 660       | K210     | Lab      | Projeto                                |
 | 9          | 04/04    | sexta             | 760       | K201     | Lab      | Projeto                                |
 | 10         | 09/04    | quarta            | 060       | K202     | Teoria   | Projeto                                |
 | 10         | 10/04    | quinta            | 660       | K210     | Lab      | Projeto                                |
 | 10         | 11/04    | sexta             | 760       | K201     | Lab      | Projeto                                |
-| 11         | 16/04    | quarta            | 060       | K202     | Teoria   | Projeto                                |
+| 11         | 16/04    | quarta            | 060       | K202     | Teoria   | Nomeação                               |
 | 11         | 17/04    | quinta            | 660       | K210     | Lab      | **Recesso**                            |
 | 11         | 18/04    | sexta             | 760       | K201     | Lab      | **Recesso**                            |
 | 12         | 23/04    | quarta            | 060       | K202     | Teoria   | Projeto                                |
