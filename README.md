@@ -5,17 +5,6 @@ Este repositório contém o material usado nas aulas de Sistemas Distribuídos (
 ## Organização do repositório
 
 O repositório possui os seguintes arquivos e pastas:
-- `README.md`: este arquivo, explicando o repositório e o funcionamento da disciplina;
-- `cronogramas`: cronograma das aulas para o semestre atual;
-- `aulas`: pasta com o material de usados nas aulas;
-- `src`: código que será usado ou desenvolvido durante as aulas.
-
-## Recursos usados para as aulas
-
-## Funcionamento da disciplina
-
-## Critério de avaliação
-
-### Projeto
-
-### Prova
+- `README.md`: este arquivo, explicando o repositório;
+- `aulas`: pasta com o material (apresentado usando Marp) usado nas aulas;
+- `src`: código para os exercícios desenvolvidos nas aulas práticas.
