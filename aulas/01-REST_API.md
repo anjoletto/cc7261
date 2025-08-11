@@ -93,6 +93,9 @@ Objetivo de promover simplicidade, escalabilidade e statelessness, usa 6 princí
 
 - **Identificação de recursos:** cada interface deve identificar de forma única uma interação entre cliente e servidor
 - **Manipulação de recursos a partir de representação:** os recursos devem possuir uma representação uniforme para a resposta do servidor
+
+## REST - Interface uniforme
+
 - **Mensagens auto descritivas:** cada recurso deve possuir informações sobre o processamento da mensagem e também informações sobre ações adicionais que o cliente pode executar
 - **Hipermídia como meio de estado da aplicação:** cliente deve possuir apenas a URI inicial e toda interação adicional deve ser feita por hyperlinks
 
