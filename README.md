@@ -6,5 +6,5 @@ Este repositório contém o material usado nas aulas de Sistemas Distribuídos (
 
 O repositório possui os seguintes arquivos e pastas:
 - `README.md`: este arquivo, explicando o repositório;
-- `aulas`: pasta com o material (apresentado usando Marp) usado nas aulas;
+- `aulas`: pasta com o material usado nas aulas. Os materiais estão em Markdown para facilitar a visualização no repositório;
 - `src`: código para os exercícios desenvolvidos nas aulas práticas.
