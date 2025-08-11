@@ -14,11 +14,6 @@ source .venv/bin/activate
 ```sh
 pip install "fastapi[standard]"
 ```
-ou
-
-```sh
-pip install -r requirements.txt
-```
 
 ### Windows dos laboratórios
 
@@ -53,9 +48,9 @@ python -m uvicorn main:app --reload
 No browser abra as páginas:
 - http://localhost:8000/
 - http://localhost:8000/docs
-- http://localhost:8000/redocs
+- http://localhost:8000/redoc
 
-Adicione no arquivo `main.py` um contador `i` inicializado com zero e a seguinte função:
+Adicione no arquivo `main.py` um contador `counter` inicializado com zero e a seguinte função:
 ```py
 @app.get("/count")
 def get_count():
@@ -119,10 +114,7 @@ def criar_pessoa(pessoa: Pessoa):
     return pessoa
 ```
 
-Teste a execução do `POST` usando o Swagger ou com o `curl` executando
-```sh
-curl -X 'POST' 'http://localhost:8000/pessoa/' -H 'accept: application/json' -H 'Content-Type: application/json' -d '{ "nome": "Nome", "sobrenome": "Sobrenome", "idade": 1 }'
-```
+Teste a execução do `POST` usando o Swagger.
 
 ## Exemplo um pouco mais longo
 
@@ -144,7 +136,6 @@ class Tarefa(BaseModel):
 @app.get("/")
 def root():
     return tarefas
-
 
 @app.get("/tarefa/{pos}")
 def get_tarefa(pos: int):
@@ -168,7 +159,3 @@ def deletar_tarefa(pos: int):
 ```
 
 Utilize o Swagger para testar as chamadas de cada recurso implementado.
-
-## Exercício
-
-Usando o FastAPI, implemente um serviço para gerenciar uma lista de contatos.
