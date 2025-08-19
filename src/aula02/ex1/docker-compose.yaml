@@ -1,0 +1,11 @@
+services:
+
+  py-rnd:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    image: cc7261:rnd
+    volumes:
+      - ./src:/app
+    deploy:
+      replicas: 10
