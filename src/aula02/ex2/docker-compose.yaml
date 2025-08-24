@@ -1,9 +1,8 @@
 services:
-
   fastapi:
     build:
-        context: .
-        dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile
     image: cc7261:fastapi
     container_name: fastapi
     ports:
@@ -11,6 +10,7 @@ services:
     volumes:
       - ./src:/app
 
-  python:
-    image: python:3.13.7-alpine3.21
-    container_name: python
+  py-random:
+    image: cc7261:random
+    deploy:
+      replicas: 10
