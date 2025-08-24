@@ -1,10 +1,9 @@
 services:
-
-  py-rnd:
+  py-random:
     build:
-        context: .
-        dockerfile: Dockerfile
-    image: cc7261:rnd
+      context: .
+      dockerfile: Dockerfile
+    image: cc7261:random
     volumes:
       - ./src:/app
     deploy:
