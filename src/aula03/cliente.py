@@ -3,7 +3,7 @@ import helloworld_pb2
 import helloworld_pb2_grpc
 from time import sleep
 
-print("Cliente conectando com servidor")
+print("Cliente conectando com servidor", flush=True)
 
 porta = "50051"
 endereco = "servidor"
