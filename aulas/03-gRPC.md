@@ -21,6 +21,15 @@ https://grpc.io/
 
 RPC é uma forma de um programa executar um procedure (subrotina) em outro endereço (programa executando no mesmo ou em outro local), como se estivesse executando a procedure de forma local sem que o desenvolvedor precise se preocupar com o a interação entre os programas.
 
+## RPC - funcionamento
+
+![h:500px](./figs/04-07.png)
+
+
+<!--
+_footer: Figura retirada do livro base da disciplina
+-->
+
 ## gRPC
 
 > Google has been using a single general-purpose RPC infrastructure called Stubby to connect the large number of microservices running within and across our data centers for over a decade. Our internal systems have long embraced the microservice architecture gaining popularity today. Having a uniform, cross-platform RPC infrastructure has allowed for the rollout of fleet-wide improvements in efficiency, security, reliability and behavioral analysis critical to supporting the incredible growth seen in that period.
