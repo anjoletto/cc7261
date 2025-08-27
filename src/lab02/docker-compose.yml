@@ -14,3 +14,13 @@ services:
     container_name: cliente
     depends_on:
       - servidor
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile_fastapi
+    container_name: fastapi
+    ports:
+      - 8000:8000
+    depends_on:
+      - servidor
