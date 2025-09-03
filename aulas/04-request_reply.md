@@ -61,6 +61,64 @@ https://zguide.zeromq.org/
 </div>
 </div>
 
+## Docker (para facilitar algumas coisas)
+
+- O `docker-compose.yaml`:
+    - mesmo formato que usamos com gRPC
+    - somente alteramos a porta do servidor para 5555
+- Dokerfile do cliente e servidor:
+    - removemos a parte do gRPC (instalação, cópia do arquivo `proto` e  compilação)
+    - instalamos o `pyzmq` pelo `pip`
+
+## Dockerfile
+```yaml
+services:
+  servidor:
+    build:
+      context: .
+      dockerfile: Dockerfile_servidor
+    container_name: servidor
+    ports:
+      - 5555:5555
+  cliente:
+    build:
+      context: .
+      dockerfile: Dockerfile_cliente
+    container_name: cliente
+    depends_on:
+      - servidor
+```
+
+## Dockerfile
+
+<div class="columns">
+<div>
+
+### servidor
+
+```docker
+FROM python:3.13.7-alpine3.21
+WORKDIR /app
+RUN pip install pyzmq
+COPY ./servidor.py .
+CMD ["python", "servidor.py"]
+```
+</div>
+<div>
+
+### cliente
+
+```docker
+FROM python:3.13.7-alpine3.21
+WORKDIR /app
+RUN pip install pyzmq
+COPY ./cliente.py .
+CMD ["python", "cliente.py"]
+```
+
+</div>
+</div>
+
 ## Código para o servidor (Python)
 ```py
 import zmq
@@ -78,33 +136,29 @@ while True:
 ## Código para o cliente (Python)
 ```py
 import zmq
+from time import sleep
 
 context = zmq.Context()
 socket = context.socket(zmq.REQ)
-socket.connect("tcp://localhost:5555")
+socket.connect("tcp://servidor:5555")
 
 i = 0
 while True:
-    print(f"Mensagem {i}:", end=" ")
+    print(f"Mensagem {i}:", end=" ", flush=True)
     socket.send(b"Hello")
     mensagem = socket.recv()
     print(f"{mensagem}")
     i += 1
-
+    sleep(0.5)
 ```
 
 ## Execução
 
 ```sh
-python servidor.py
+docker compose up
 ```
 
-Em outro terminal
-```sh
-python cliente.py
-```
-
-* e se inverter a ordem?
+* e se inverter a ordem? (trocar o `depends_on` do `docker-compose.yml`)
 * e ser o servidor cair e voltar?
 * o que é o `b` antes da string?
 
@@ -133,45 +187,7 @@ Padrão de balanceamento de carga
 </div>
 </div>
 
-## Código do cliente (python)
-
-
-```py
-import zmq
-
-context = zmq.Context()
-socket = context.socket(zmq.REQ)
-socket.connect("tcp://localhost:5555") # conecta no broker local
-
-msg_count = 0
-while True:
-    print(f"Mensagem {msg_count}:", end=" ")
-    socket.send(b"Hello") # envia mensagem (request)
-    mensagem = socket.recv() # recebe mensagem (reply)
-    print(f"{mensagem}")
-    msg_count += 1
-```
-
-## Código do servidor (python)
-
-
-```py
-import zmq
-
-context = zmq.Context()
-socket = context.socket(zmq.REP)
-socket.connect("tcp://localhost:5556") # conecta no broker local
-msg_count = 0
-
-while True:
-    print(f"Mensagem {msg_count}:", end=" ")
-    message = socket.recv()
-    socket.send_string("World")
-    print(f"{message}")
-    msg_count += 1
-```
-
-## Código do broker (python) - parte 1
+## Código do broker - parte 1/2
 
 ```py
 import zmq
@@ -190,7 +206,7 @@ poller.register(server_socket, zmq.POLLIN)
 server_count = 0
 ```
 
-## Código do broker (python) - parte 2
+## Código do broker - parte 2/2
 
 ```py
 while True:
@@ -216,4 +232,109 @@ while True:
             client_socket.send(message)
         print(f"Server messages: {server_count}")
 
+```
+
+## Código do cliente (python)
+
+
+```py
+import zmq
+from time import sleep
+
+context = zmq.Context()
+socket = context.socket(zmq.REQ)
+socket.connect("tcp://broker:5555")
+
+i = 0
+while True:
+    print(f"Mensagem {i}:", end=" ", flush=True)
+    socket.send(b"Hello")
+    mensagem = socket.recv()
+    print(f"{mensagem}", flush=True)
+    i += 1
+    sleep(0.5)
+```
+
+## Código do servidor (python)
+
+
+```py
+import zmq
+
+context = zmq.Context()
+socket = context.socket(zmq.REP)
+socket.connect("tcp://broker:5556")
+
+while True:
+    message = socket.recv()
+    print(f"Mensagem recebida: {message}", flush=True)
+    socket.send_string("World")
+
+```
+
+## Dockerfiles
+
+<div class="columns">
+<div>
+
+```docker
+FROM python:3.13.7-alpine3.21
+WORKDIR /app
+RUN pip install pyzmq
+COPY ./broker.py .
+CMD ["python", "broker.py"]
+```
+
+```docker
+FROM python:3.13.7-alpine3.21
+WORKDIR /app
+RUN pip install pyzmq
+COPY ./servidor.py .
+CMD ["python", "servidor.py"]
+```
+
+</div>
+<div>
+
+```docker
+FROM python:3.13.7-alpine3.21
+WORKDIR /app
+RUN pip install pyzmq
+COPY ./cliente.py .
+CMD ["python", "cliente.py"]
+```
+
+</div>
+</div>
+
+## docker-compose.yml - parte 1/2
+
+```yml
+services:
+
+  broker:
+    build:
+      context: .
+      dockerfile: Dockerfile_broker
+    container_name: broker
+    ports:
+      - 5555:5555
+      - 5556:5556
+```
+## docker-compose.yml - parte 2/2
+
+```yml
+  servidor:
+    build:
+      context: .
+      dockerfile: Dockerfile_servidor
+    depends_on:
+      - broker
+
+  cliente:
+    build:
+      context: .
+      dockerfile: Dockerfile_cliente
+    depends_on:
+      - servidor
 ```

@@ -1,0 +1,17 @@
+services:
+  servidor:
+    build:
+      context: .
+      dockerfile: Dockerfile_servidor
+    container_name: servidor
+    ports:
+      - 5555:5555
+
+  cliente:
+    build:
+      context: .
+      dockerfile: Dockerfile_cliente
+    depends_on:
+      - servidor
+    deploy:
+      replicas: 10
