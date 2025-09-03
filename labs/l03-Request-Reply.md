@@ -75,7 +75,7 @@ services:
     depends_on:
       - servidor
     volumes:
-      - ./servidor.py:/app/servidor.py
+      - ./cliente.py:/app/cliente.py
 ```
 
 Como o código do broker continua o mesmo, a imagem dele será criada apenas uma vez e usada durante o exercícios. As imagens do servidor e cliente terão um volume montado para usar o arquivo com o código que está em desenvolvimento dentro do container (portanto não é necessário recontruir as imagens a cada alteração) e o container do cliente tem as opção `tty` e `stdin_open` que permite que o usuário conecte ao container e execute comandos usando `docker attatch cliente`.
