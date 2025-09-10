@@ -70,85 +70,103 @@ https://zguide.zeromq.org/docs/chapter5/
 ## Código do publisher (python)
 
 ```py
-import time
 import zmq
+from time import time, sleep
 
-ctx = zmq.Context()
-pub = ctx.socket(zmq.PUB)
+context = zmq.Context()
+pub = context.socket(zmq.PUB)
 pub.bind("tcp://*:5555")
 
 while True:
-    msg = str(time.time())
-    print(f"msg: {msg}")
-    pub.send_string(msg)
-    time.sleep(1)
+    message = str(time())
+    print(f"message: {message}", flush=True)
+    pub.send_string(message)
+    sleep(1)
+
+pub.close()
+context.close()
 ```
 
 ## Código do subscriber (python)
 ```py
 import zmq
+from time import sleep
 
-ctx = zmq.Context()
-sub = ctx.socket(zmq.SUB)
+context = zmq.Context()
+sub = context.socket(zmq.SUB)
 sub.setsockopt_string(zmq.SUBSCRIBE, "")
-sub.connect("tcp://localhost:5555")
+sub.connect("tcp://publisher:5555")
 
 while True:
-    msg = sub.recv_string()
-    print(f"msg: {msg}")
-```
-
-## Com proxy entre pub e sub (publisher)
-```py
-import time
-import zmq
-
-ctx = zmq.Context.instance()
-pub = ctx.socket(zmq.PUB)
-pub.connect("tcp://localhost:5555")
-
-while True:
-    msg = str(time.time())
-    print(f"msg: {msg}")
-    pub.send_string(msg)
-    time.sleep(1)
-
-ctx.close()
-pub.close()
-```
-
-## Com proxy entre pub e sub (subscriber)
-```py
-import zmq
-
-ctx = zmq.Context()
-sub = ctx.socket(zmq.SUB)
-sub.setsockopt_string(zmq.SUBSCRIBE, "")
-sub.connect("tcp://localhost:5556")
-
-while True:
-    msg = sub.recv_string()
-    print(f"msg: {msg}")
+    message = sub.recv_string()
+    print(f"message: {message}", flush=True)
 
 sub.close()
-ctx.close()
+context.close()
 ```
 
-## Com proxy entre pub e sub (proxy)
+## Para testar
+
+- Os arquivos Dockerfile e docker-compose.yaml estão no Moodle e no repositório
+- Execução: `docker compose up`
+
+
+## Com proxy - publisher
+```py
+import zmq
+from time import time, sleep
+
+context = zmq.Context()
+pub = context.socket(zmq.PUB)
+pub.connect("tcp://proxy:5555")
+while True:
+    message = str(time())
+    print(f"message: {message}", flush=True)
+    pub.send_string(message)
+    sleep(1)
+pub.close()
+context.close()
+```
+
+## Com proxy - subscriber
+```py
+import zmq
+from time import sleep
+
+context = zmq.Context()
+sub = context.socket(zmq.SUB)
+sub.setsockopt_string(zmq.SUBSCRIBE, "")
+sub.connect("tcp://proxy:5556")
+while True:
+    message = sub.recv_string()
+    print(f"message: {message}", flush=True)
+sub.close()
+context.close()
+```
+
+## Com proxy - proxy
 ```py
 import zmq
 
-ctx = zmq.Context()
+context = zmq.Context()
 
-pub = ctx.socket(zmq.XPUB)
+pub = context.socket(zmq.XPUB)
 pub.bind("tcp://*:5556")
 
-sub = ctx.socket(zmq.XSUB)
+sub = context.socket(zmq.XSUB)
 sub.bind("tcp://*:5555")
 
 zmq.proxy(pub, sub)
 
 pub.close()
 sub.close()
-ctx.close()
+context.close()
 ```
+
+## Testes
+O que podemos testar:
+1. Subscriber demora para conectar
+1. Publisher não espera para publicar
+1. 1 publisher e N subscribers
+1. N publishers e 1 subscriber
+1. N publishers e N subscribers
