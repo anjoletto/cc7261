@@ -1,0 +1,27 @@
+services:
+
+  proxy:
+    build: .
+    image: cc7261:pyzmq
+    container_name: proxy
+    volumes:
+      - ./proxy.py:/app/main.py
+    ports:
+      - 5555:5555
+      - 5556:5556
+
+  publisher:
+    build: .
+    image: cc7261:pyzmq
+    volumes:
+      - ./publisher.py:/app/main.py
+    deploy:
+      replicas: 1
+
+  subscriber:
+    build: .
+    image: cc7261:pyzmq
+    volumes:
+      - ./subscriber.py:/app/main.py
+    deploy:
+      replicas: 1
