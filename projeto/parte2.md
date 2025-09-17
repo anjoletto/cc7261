@@ -53,7 +53,7 @@ A troca de mensagens entre usuários segue um padrão parecido, porém no lugar 
 ```mermaid
 sequenceDiagram
   Usuário1 ->> Servidor: REQ: Usuário2, mensagem
-  Servidor ->> Proxy: PUB[Usuário2]: Usuário1, mensagem
+  Servidor ->> Usuário2: PUB: Usuário1, mensagem
   Servidor ->> Usuário1: REP: OK/erro
 ```
 
