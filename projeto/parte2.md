@@ -54,7 +54,7 @@ A troca de mensagens entre usuários segue um padrão parecido, porém no lugar 
 sequenceDiagram
   Usuário1 ->> Servidor: REQ: Usuário2, mensagem
   Servidor ->> Proxy: PUB[Usuário2]: Usuário1, mensagem
-  Servidor ->> Usuário: REP: OK/erro
+  Servidor ->> Usuário1: REP: OK/erro
 ```
 
 A mensagem enviada pelo cliente ao servidor tem o formato:
