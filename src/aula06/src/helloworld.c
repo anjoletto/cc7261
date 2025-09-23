@@ -3,11 +3,9 @@
 
 int main(){
   MPI_Init(NULL, NULL);
+  int size, rank;
 
-  int size;
   MPI_Comm_size(MPI_COMM_WORLD, &size);
-
-  int rank;
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
   printf("Hello world (rank %d de %d workers)\n", rank, size);
